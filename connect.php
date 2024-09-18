@@ -1,28 +1,18 @@
 <?php
+// Charger l'autoloader généré par Composer
+require_once __DIR__ . '/vendor/autoload.php';
 
-        //CST d'environnement
-            define("DBhost","localhost");
-            define("DBuser","root");
-            define("DBpass","siosql");
-            define("DBname","sharerecipe");
+// Charger les variables d'environnement depuis le fichier .env
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-            //DSN de connection
-            $dsn="mysql:dbname=".DBname.";host=".DBhost;
-            
-            //on va se connecter à la base
-            try{
-                //on instancie PDO
-                $db= new PDO($dsn, DBuser, DBpass);
-                // echo "connexion réussie";
+// Utiliser les variables d'environnement pour la connexion à la base de données
+$dsn = "mysql:dbname=" . $_ENV['DB_NAME'] . ";host=" . $_ENV['DB_HOST'];
 
-                //on s'assure d'envoyer les données en utf8
-                $db->exec("set names 'utf8'");
-                
-                //on def le mode de fetch par défaut
-                 $db-> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-            }
-            catch(PDOException $e){
-                die($e->getMessage());
-            }
-            //on est connecté à la base
-?>
+try {
+    $db = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASS']);
+    $db->exec("set names 'utf8'");
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die($e->getMessage());
+}

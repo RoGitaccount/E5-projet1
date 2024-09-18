@@ -1,9 +1,6 @@
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : ven. 26 avr. 2024 à 00:47
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 

@@ -13,7 +13,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["id_auteur"])) {
 
 // On vérifie si on a un ID CAD on vérifie si $_GET["id_recette"] existe et n'est pas vide.
 if (!isset($_GET["id_recette"]) || empty($_GET["id_recette"])) {
-    // Je n'ai pas d'ID     Si $_GET["id"] n'existe pas ou est vide, on effectue une redirection vers "articles.php".
+    // Je n'ai pas d'ID     Si $_GET["id"] n'existe pas ou est vide, on effectue une redirection vers "Listes_recettes.php".
     header("Location: Listes_recettes.php");
     exit;
 }
@@ -178,9 +178,9 @@ $titre = strip_tags($recette["titre"]);
             <h2 class="text-lg font-bold mb-2">Description:</h2>
             <p class="mb-2"><?= strlen(strip_tags($recette["description"])) > 50 ? wordwrap(strip_tags($recette["description"]), 50, "<br>", true) : strip_tags($recette["description"]); ?></p>
             <h2 class="text-lg font-bold mb-2">Ingrédients:</h2>
-            <p class="mb-2"><?= strlen(strip_tags($recette["ingredients"])) > 30 ? wordwrap(strip_tags($recette["ingredients"]), 30, "<br>", true) : strip_tags($recette["ingredients"]); ?></p>
+            <p class="mb-2"><?= strlen(strip_tags($recette["ingredients"])) > 50 ? wordwrap(strip_tags($recette["ingredients"]), 50, "<br>", true) : strip_tags($recette["ingredients"]); ?></p>
             <h2 class="text-lg font-bold mb-2">Étapes de préparation:</h2>
-            <p class="mb-2"><?= strlen(strip_tags($recette["etapes_preparation"])) > 30 ? wordwrap(strip_tags($recette["etapes_preparation"]), 30, "<br>", true) : strip_tags($recette["etapes_preparation"]); ?></p>
+            <p class="mb-2"><?= strlen(strip_tags($recette["etapes_preparation"])) > 50 ? wordwrap(strip_tags($recette["etapes_preparation"]), 50, "<br>", true) : strip_tags($recette["etapes_preparation"]); ?></p>
             <h2 class="text-lg font-bold mb-2">Temps de préparation:</h2>
             <p class="mb-2"><?= strip_tags($recette["temps_preparation"]) ?></p>
             <h2 class="text-lg font-bold mb-2">Temps de cuisson:</h2>
@@ -244,7 +244,3 @@ $titre = strip_tags($recette["titre"]);
 
 </html>
 
-
-</body>
-
-</html>
